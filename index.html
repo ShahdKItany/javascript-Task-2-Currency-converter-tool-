@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter-shahd</title>
+ 
+</head>
+<body>
+
+<form class="registerForm" onsubmit="convertCurrency(event)">
+  <label>Amount</label>
+  <input type="text" name="amount" id="amount" />
+  <select name="exchange" id="exchange">
+    <option value="usd">Dollar</option>
+    <option value="dinar">Dinar</option>
+    <option value="nis">NIS</option>
+  </select>
+  <p class="result" id="result"></p>
+  <input type="submit" value="Convert" />
+</form>
+
+<script>
+  function convertCurrency(event) {
+    event.preventDefault();
+
+    
+    const amount = parseFloat(document.getElementById('amount').value);
+    const currency = document.getElementById('exchange').value;
+
+    
+    let convertedAmount;
+    switch (currency) {
+      case 'usd':
+        convertedAmount = amount * 0.27; // Replace with the actual conversion rate
+        break;
+      case 'dinar':
+        convertedAmount = amount * 0.30; // Replace with the actual conversion rate
+        break;
+      case 'nis':
+        convertedAmount = amount * 1; // NIS to NIS (1:1 conversion)
+        break;
+      default:
+        convertedAmount = 'Invalid currency';
+    }
+
+   
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `Converted Amount: ${convertedAmount.toFixed(2)} ${currency.toUpperCase()}`;
+  }
+</script>
+
+</body>
+</html>
